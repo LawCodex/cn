@@ -43,7 +43,7 @@ def mof_list(sort_id, sort_name):
     out, page, maxp = [], 1, 1
     while page <= maxp:
         q = {
-            "pageNum": page, "sortName": sort_name, "fg": "2", "xiaoliTp": "1",
+            "pageNum": page, "sortName": sort_name, "fg": "2", "xiaoliTp": sort_id,
             "queryCon": json.dumps([{"fg": "2", "sortId": sort_id, "sortName": sort_name}], ensure_ascii=False,
                                    separators=(",", ":")),
         }

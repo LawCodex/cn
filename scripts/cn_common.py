@@ -18,6 +18,17 @@ _session.headers.update({"User-Agent": UA, "Accept-Language": "zh-CN,zh;q=0.9"})
 _last = [0.0]
 
 
+class Blocked(Exception):
+    """The server answered with a bot challenge (JavaScript check). We do not try to bypass these."""
+
+
+CHALLENGE = (b"Please enable JavaScript and refresh the page", "请开启JavaScript并刷新该页".encode())
+
+
+def is_challenge(data):
+    return len(data) < 60000 and any(c in data for c in CHALLENGE) and b'id="Zoom"' not in data
+
+
 def cache_path(url):
     p = urllib.parse.urlparse(url)
     h = hashlib.sha1(url.encode()).hexdigest()[:16]
@@ -33,6 +44,9 @@ def fetch(url, binary=False, refresh=False, tries=5):
     if not refresh and os.path.exists(path) and os.path.getsize(path) > 0:
         with open(path, "rb") as f:
             data = f.read()
+        if is_challenge(data):
+            os.remove(path)
+            return fetch(url, binary, refresh, tries)
         return data if binary else data.decode("utf-8", "replace")
     os.makedirs(os.path.dirname(path), exist_ok=True)
     err = None
@@ -47,6 +61,8 @@ def fetch(url, binary=False, refresh=False, tries=5):
                 return None
             r.raise_for_status()
             data = r.content
+            if is_challenge(data):
+                raise Blocked(url)
             with open(path, "wb") as f:
                 f.write(data)
             if binary:

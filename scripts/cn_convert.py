@@ -308,7 +308,7 @@ def parse_xzfg(lid):
 def parse_npc(url):
     html = fetch(url)
     doc = lxml.html.fromstring(html)
-    z = doc.xpath('//div[@id="Zoom"]')
+    z = doc.xpath('//div[@id="Zoom"]') or doc.xpath('//div[@id="UCAP-CONTENT"]')
     blocks = html_blocks(z[0], url) if z else []
     t = doc.xpath('//div[@class="tit"]/h1')
     return url, (norm_ws(t[0].text_content()) if t else None), blocks
@@ -482,6 +482,9 @@ def conv_regs(stats, used):
         first = min(dates) if dates else (first_date(hist) or r["published"])
         orders = re.findall(r"国务院令第\s*(\d+)\s*号", hist or "")
         ident = f"国务院令第{orders[-1]}号" if orders else None
+        if not ident:
+            docs = re.findall(r"([\u4e00-\u9fff]{1,6}[〔\[［(（]\d{4}[〕\]］)）]\d+号)", hist or "")
+            ident = docs[-1] if docs else None
         year = (first or r["published"] or "0000")[:4]
         path = unique(os.path.join(ROOT, "administrative-regulations", year, slugify_zh(title) + ".md"), used)
         fm = {

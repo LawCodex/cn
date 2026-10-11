@@ -12,7 +12,7 @@ import re
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from cn_common import RAW, fetch  # noqa: E402
+from cn_common import RAW, Blocked, fetch  # noqa: E402
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 
@@ -22,7 +22,7 @@ def n(s):
 
 
 def head_years(html):
-    m = re.search(r'id="Zoom"(.*)', html, re.S)
+    m = re.search(r'id="(?:Zoom|UCAP-CONTENT)"(.*)', html, re.S)
     body = re.sub(r"<[^>]+>", "", m.group(1) if m else html)
     body = body.translate(str.maketrans("０１２３４５６７８９", "0123456789"))
     i = body.find("（")
@@ -50,7 +50,7 @@ def main():
         man = json.load(open(mp))
         only = {x["title"] for x in man["missing"]} | {x["title"] for x in man["matched"] if x.get("stale")}
         only |= {"中华人民共和国宪法"}
-    out = {}
+    out, blocked = {}, []
     for e in mulu:
         t = e["title"]
         if e["category"] == "宪法":
@@ -59,7 +59,12 @@ def main():
             continue
         cands = curated.get(t, []) + sorted(by.get(n(t), []), key=lambda x: x["date"] or "", reverse=True)
         for c in cands[:4]:
-            html = fetch(c["url"])
+            try:
+                html = fetch(c["url"])
+            except Blocked:
+                print("BLOCKED (JS challenge, skipped)", t, c["url"], file=sys.stderr)
+                blocked.append(t)
+                break
             if not html:
                 continue
             ys = head_years(html)
@@ -69,7 +74,7 @@ def main():
                 break
     with open(os.path.join(RAW, "npc_fallback.json"), "w") as f:
         json.dump(out, f, ensure_ascii=False, indent=1)
-    print(len(out), "resolved", file=sys.stderr)
+    print(len(out), "resolved;", len(blocked), "blocked by bot challenge", file=sys.stderr)
 
 
 if __name__ == "__main__":
