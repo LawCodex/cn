@@ -65,8 +65,8 @@ def main():
                 print("BLOCKED (JS challenge, skipped)", t, c["url"], file=sys.stderr)
                 blocked.append(t)
                 break
-            if not html:
-                continue
+            if not html or not re.search(r'id="(?:Zoom|UCAP-CONTENT)"', html):
+                continue  # dead link (redirects to the home page) or unknown layout
             ys = head_years(html)
             need = e.get("last_year") or 0
             if e["category"] == "宪法" or c in curated.get(t, []) or (ys and max(ys) >= need):

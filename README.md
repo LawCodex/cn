@@ -18,15 +18,15 @@ Retrieved: 2026-10-12. Reference list of laws: NPC *现行有效法律目录（3
 | Part | Directory | Files |
 |---|---|---:|
 | Constitution (consolidated, 2018) + amendments 1988, 1993, 1999, 2004, 2018 | `constitution/` | 6 |
-| Laws — 宪法相关法 (constitution-related laws) | `laws/xianfa-xiangguanfa/` | 46 / 56 |
+| Laws — 宪法相关法 (constitution-related laws) | `laws/xianfa-xiangguanfa/` | 53 / 56 |
 | Laws — 民法商法 (civil and commercial law) | `laws/minfa-shangfa/` | 24 / 24 |
-| Laws — 行政法 (administrative law) | `laws/xingzhengfa/` | 63 / 75 |
-| Laws — 经济法 (economic law) | `laws/jingjifa/` | 69 / 71 |
+| Laws — 行政法 (administrative law) | `laws/xingzhengfa/` | 66 / 75 |
+| Laws — 经济法 (economic law) | `laws/jingjifa/` | 70 / 71 |
 | Laws — 社会法 (social law) | `laws/shehuifa/` | 29 / 32 |
 | Laws — 生态环境法 (ecological and environmental law) | `laws/shengtai-huanjingfa/` | 27 / 27 |
 | Laws — 刑法 (criminal law) | `laws/xingfa/` | 7 / 7 |
 | Laws — 诉讼与非诉讼程序法 (procedural law) | `laws/susong-yu-feisusong-chengxufa/` | 10 / 10 |
-| **Laws total** | `laws/` | **275 / 302** |
+| **Laws total** | `laws/` | **286 / 302** |
 | Administrative regulations in force (行政法规, 现行有效) | `administrative-regulations/<year>/` | 606 / 606 |
 | Judicial interpretations in force (司法解释) | `judicial-interpretations/<year>/` | 199 |
 
@@ -35,26 +35,24 @@ not yet in force also have the version currently in force as `<slug>--current.md
 
 ### Not covered / known gaps
 
-- **27 laws of the NPC list are missing** (mostly military, police and state-organ laws, and old NPCSC
-  approval resolutions that the MOFCOM database does not carry). Their texts are on www.npc.gov.cn, but while
-  this corpus was being built npc.gov.cn started answering every request with a JavaScript bot challenge
-  ("请开启JavaScript并刷新该页"), which we do not circumvent. Missing:
-  人民法院组织法, 人民检察院组织法, 全国人大常委会关于县级以下人民代表大会代表直接选举的若干规定,
-  全国人大常委会关于在沿海港口城市设立海事法院的决定 (no online text found), 全国人民代表大会常务委员会议事规则,
-  全国人大常委会关于批准中央军事委员会《关于授予军队离休干部中国人民解放军功勋荣誉章的规定》的决定,
-  香港特别行政区驻军法, 澳门特别行政区驻军法, 英雄烈士保护法, 陆地国界法,
+- **16 laws of the NPC list are missing** — mostly military, police and old NPCSC approval resolutions that
+  the MOFCOM database does not carry, and whose npc.gov.cn pages could not be located (old URLs now redirect
+  to the home page) or which have no online text at all:
+  全国人大常委会关于在沿海港口城市设立海事法院的决定,
+  全国人大常委会关于批准中央军事委员会《关于授予军队离休干部中国人民解放军功勋荣誉章的规定》的决定, 陆地国界法,
   全国人大常委会关于批准《国务院关于安置老弱病残干部的暂行办法》的决议,
   全国人大常委会关于批准《国务院关于老干部离职休养的暂行规定》的决议, 中国人民解放军军官军衔条例,
-  人民警察警衔条例, 人民警察法, 枪支管理法, 人民防空法, 防震减灾法, 国家情报法, 消防救援衔条例, 海警法,
-  军人地位和权益保障法,
-  全国人大常委会关于批准《广东省经济特区条例》的决议, 耕地占用税法,
+  人民警察警衔条例, 人民警察法, 枪支管理法, 人民防空法, 海警法, 军人地位和权益保障法,
+  全国人大常委会关于批准《广东省经济特区条例》的决议,
   全国人大常委会关于批准《国务院关于工人退休、退职的暂行办法》的决议,
   全国人大常委会关于批准《国务院关于职工探亲待遇的规定》的决议, 退役军人保障法.
+  Note: during the import npc.gov.cn temporarily served a JavaScript bot challenge
+  ("请开启JavaScript并刷新该页") for a while; it was not circumvented — the fetcher detects such pages, never
+  caches them, and the affected pages were fetched later once normal pages were served again.
 - **Outdated texts** (front matter carries a `warning:`): 律师法 (2026 amendment), 注册会计师法 (2026 amendment),
-  村民委员会组织法 (2025 amendment), 反恐怖主义法 (2015 text; 2018 amendment missing) and 中国人民解放军选举全国人民代表大会和县级以上地方各级人民代表大会代表的办法
+  村民委员会组织法 (2025 amendment) and 中国人民解放军选举全国人民代表大会和县级以上地方各级人民代表大会代表的办法
   (2021 amendment). For these, the sources usable here only offer the amending decision (修改决定) or an
-  older consolidated text (反恐怖主义法: the npc.gov.cn consolidated text is behind the bot challenge); the file
-  contains the latest consolidated text available.
+  older consolidated text; the file contains the latest consolidated text available.
 - Images (flag and emblem drawings, the score of the national anthem, some tax-rate tables published as
   pictures) are not reproduced; where the source embeds them they are kept as links to the official image URL.
 - **Judicial interpretations** are the subset held by the MOFCOM database (199 in force, mostly civil,
@@ -69,8 +67,8 @@ not yet in force also have the version currently in force as `<slug>--current.md
 |---|---|---|
 | List of laws in force + legal departments | NPC, *现行有效法律目录（303件）*, <http://www.npc.gov.cn/npc/c2597/c5854/c5855/202609/P020260904396146393500.pdf> | official PDF, parsed by `cn_mulu.py` |
 | Law texts (254 laws + 3 current versions) | 商务部 全球法规网 / MOFCOM *China Laws & Regulations* database, <https://policy.mofcom.gov.cn/claw/> | official database of the Ministry of Commerce; each record names its own source (mostly 中国人大网) |
-| Constitution, amendments, 17 law texts | 中国人大网 (NPC website), <http://www.npc.gov.cn/> (incl. its legacy `zgrdw` archive) | used where MOFCOM lacks the law or has an older version |
-| 4 law texts (精神卫生法, 现役军官法, 反恐怖主义法, 解放军现役士兵衔级制度决定) | 中国政府网, <https://www.gov.cn/> (incl. State Council Gazette pages) | |
+| Constitution, amendments, 28 law texts | 中国人大网 (NPC website), <http://www.npc.gov.cn/> (incl. its legacy `zgrdw` archive) | used where MOFCOM lacks the law or has an older version |
+| 4 law texts (精神卫生法, 现役军官法, 解放军现役士兵衔级制度决定, …) | 中国政府网, <https://www.gov.cn/> (incl. State Council Gazette pages) | |
 | Administrative regulations | 国家行政法规库 (State Council administrative regulations database, Ministry of Justice), <https://xzfg.moj.gov.cn/> | the official compilation under the 行政法规制定程序条例; also embedded at gov.cn/zhengce/xzfgk |
 | Judicial interpretations | MOFCOM 全球法规网, 效力级别 = 司法解释 | |
 

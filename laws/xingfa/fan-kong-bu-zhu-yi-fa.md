@@ -7,27 +7,12 @@ language: zh-Hans
 status: in_force
 history: "2015年通过，2018年修正"
 npc_list_no: "刑法 4"
-source: "https://www.gov.cn/zhengce/2015-12/28/content_5029899.htm"
-source_note: "中国政府网 (www.gov.cn); 来源: 中国人大网"
+source: "http://www.npc.gov.cn/zgrdw/npc/xinwen/2018-06/12/content_2055871.htm"
+source_note: "中国人大网 (www.npc.gov.cn)"
 retrieved: 2026-10-12
-warning: "Source text is older than the latest amendment listed by the NPC (2018); a newer consolidated text was not available from the sources used."
 ---
 
 # 中华人民共和国反恐怖主义法
-
-中华人民共和国主席令
-
-第　三十六　号
-
-《中华人民共和国反恐怖主义法》已由中华人民共和国第十二届全国人民代表大会常务委员会第十八次会议于2015年12月27日通过，现予公布，自2016年1月1日起施行。
-
-中华人民共和国主席 习近平
-
-2015年12月27日
-
-中华人民共和国反恐怖主义法
-
-（2015年12月27日第十二届全国人民代表大会常务委员会第十八次会议通过）
 
 ## 第一章 总则
 
@@ -281,8 +266,6 @@ warning: "Source text is older than the latest amendment listed by the NPC (2018
 
 海关、出入境边防检查机关发现恐怖活动嫌疑人员或者涉嫌恐怖活动物品的，应当依法扣留，并立即移送公安机关或者国家安全机关。
 
-检验检疫机关发现涉嫌恐怖活动物品的，应当依法扣留，并立即移送公安机关或者国家安全机关。
-
 ### 第四十一条
 
 国务院外交、公安、国家安全、发展改革、工业和信息化、商务、旅游等主管部门应当建立境外投资合作、旅游等安全风险评估制度，对中国在境外的公民以及驻外机构、设施、财产加强安全保护，防范和应对恐怖袭击。
@@ -451,7 +434,7 @@ warning: "Source text is older than the latest amendment listed by the NPC (2018
 
 ### 第六十五条
 
-当地人民政府应当及时给予恐怖事件受害人员及其近亲属适当的救助，并向失去基本生活条件的受害人员及其近亲属及时提供基本生活保障。卫生、民政等主管部门应当为恐怖事件受害人员及其近亲属提供心理、医疗等方面的援助。
+当地人民政府应当及时给予恐怖事件受害人员及其近亲属适当的救助，并向失去基本生活条件的受害人员及其近亲属及时提供基本生活保障。卫生、医疗保障等主管部门应当为恐怖事件受害人员及其近亲属提供心理、医疗等方面的援助。
 
 ### 第六十六条
 
