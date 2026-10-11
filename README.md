@@ -67,8 +67,8 @@ not yet in force also have the version currently in force as `<slug>--current.md
 |---|---|---|
 | List of laws in force + legal departments | NPC, *现行有效法律目录（303件）*, <http://www.npc.gov.cn/npc/c2597/c5854/c5855/202609/P020260904396146393500.pdf> | official PDF, parsed by `cn_mulu.py` |
 | Law texts (254 laws + 3 current versions) | 商务部 全球法规网 / MOFCOM *China Laws & Regulations* database, <https://policy.mofcom.gov.cn/claw/> | official database of the Ministry of Commerce; each record names its own source (mostly 中国人大网) |
-| Constitution, amendments, 28 law texts | 中国人大网 (NPC website), <http://www.npc.gov.cn/> (incl. its legacy `zgrdw` archive) | used where MOFCOM lacks the law or has an older version |
-| 4 law texts (精神卫生法, 现役军官法, 解放军现役士兵衔级制度决定, …) | 中国政府网, <https://www.gov.cn/> (incl. State Council Gazette pages) | |
+| Constitution, amendments, 29 law texts | 中国人大网 (NPC website), <http://www.npc.gov.cn/> (incl. its legacy `zgrdw` archive) | used where MOFCOM lacks the law or has an older version |
+| 3 law texts (精神卫生法, 现役军官法, 解放军现役士兵衔级制度决定) | 中国政府网, <https://www.gov.cn/> (incl. State Council Gazette pages) | |
 | Administrative regulations | 国家行政法规库 (State Council administrative regulations database, Ministry of Justice), <https://xzfg.moj.gov.cn/> | the official compilation under the 行政法规制定程序条例; also embedded at gov.cn/zhengce/xzfgk |
 | Judicial interpretations | MOFCOM 全球法规网, 效力级别 = 司法解释 | |
 
