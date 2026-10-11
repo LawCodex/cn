@@ -1,5 +1,6 @@
 ---
 title: "军用土地管理条例"
+identifier: "国务院、中央军事委员会令第816号"
 xzfg_law_id: "1779"
 type: regulation
 jurisdiction: cn

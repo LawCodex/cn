@@ -1,5 +1,6 @@
 ---
 title: "国防交通条例"
+identifier: "国务院、中央军事委员会令第173号"
 xzfg_law_id: "401"
 type: regulation
 jurisdiction: cn

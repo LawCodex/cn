@@ -1,5 +1,6 @@
 ---
 title: "通用航空飞行管制条例"
+identifier: "国务院、中央军事委员会令第371号"
 xzfg_law_id: "607"
 type: regulation
 jurisdiction: cn

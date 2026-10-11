@@ -1,5 +1,6 @@
 ---
 title: "军人抚恤优待条例"
+identifier: "国务院、中央军事委员会令第788号"
 xzfg_law_id: "1731"
 type: regulation
 jurisdiction: cn

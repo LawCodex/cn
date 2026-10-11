@@ -1,5 +1,6 @@
 ---
 title: "中国人民武装警察部队实行警官警衔制度的具体办法"
+identifier: "国务院、中央军事委员会令第22号"
 xzfg_law_id: "1434"
 type: regulation
 jurisdiction: cn

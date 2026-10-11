@@ -1,5 +1,6 @@
 ---
 title: "武器装备科研生产许可管理条例"
+identifier: "国务院、中央军事委员会令第521号"
 xzfg_law_id: "211"
 type: regulation
 jurisdiction: cn

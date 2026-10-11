@@ -1,5 +1,6 @@
 ---
 title: "武器装备质量管理条例"
+identifier: "国务院、中央军事委员会令第582号"
 xzfg_law_id: "312"
 type: regulation
 jurisdiction: cn

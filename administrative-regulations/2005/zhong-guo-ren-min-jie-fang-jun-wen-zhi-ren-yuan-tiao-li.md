@@ -1,5 +1,6 @@
 ---
 title: "中国人民解放军文职人员条例"
+identifier: "国务院、中央军事委员会令第757号"
 xzfg_law_id: "1526"
 type: regulation
 jurisdiction: cn

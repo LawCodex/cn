@@ -1,5 +1,6 @@
 ---
 title: "中华人民共和国飞行基本规则"
+identifier: "国务院、中央军事委员会令第288号"
 xzfg_law_id: "1627"
 type: regulation
 jurisdiction: cn

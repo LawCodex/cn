@@ -1,5 +1,6 @@
 ---
 title: "军队参加抢险救灾条例"
+identifier: "国务院、中央军事委员会令第436号"
 xzfg_law_id: "140"
 type: regulation
 jurisdiction: cn

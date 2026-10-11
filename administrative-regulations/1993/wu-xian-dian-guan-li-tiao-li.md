@@ -1,5 +1,6 @@
 ---
 title: "中华人民共和国无线电管理条例"
+identifier: "国务院、中央军事委员会令第672号"
 xzfg_law_id: "1573"
 type: regulation
 jurisdiction: cn

@@ -1,5 +1,6 @@
 ---
 title: "中华人民共和国红十字标志使用办法"
+identifier: "国务院、中央军事委员会令第194号"
 xzfg_law_id: "459"
 type: regulation
 jurisdiction: cn

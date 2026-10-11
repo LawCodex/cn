@@ -1,5 +1,6 @@
 ---
 title: "征兵工作条例"
+identifier: "国务院、中央军事委员会令第759号"
 xzfg_law_id: "1534"
 type: regulation
 jurisdiction: cn

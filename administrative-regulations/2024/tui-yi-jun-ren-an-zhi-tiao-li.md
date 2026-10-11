@@ -1,5 +1,6 @@
 ---
 title: "退役军人安置条例"
+identifier: "国务院、中央军事委员会令第787号"
 xzfg_law_id: "1730"
 type: regulation
 jurisdiction: cn

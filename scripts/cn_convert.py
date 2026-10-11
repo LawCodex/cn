@@ -480,8 +480,8 @@ def conv_regs(stats, used):
         hist = history_note(blocks)
         dates = [h["date"] for h in r.get("history", [])]
         first = min(dates) if dates else (first_date(hist) or r["published"])
-        orders = re.findall(r"国务院令第\s*(\d+)\s*号", hist or "")
-        ident = f"国务院令第{orders[-1]}号" if orders else None
+        orders = re.findall(r"((?:中华人民共和国)?国务院(?:、(?:中华人民共和国)?中央军事委员会)?令第\s*\d+\s*号)", hist or "")
+        ident = re.sub(r"中华人民共和国|\s", "", orders[-1]) if orders else None
         if not ident:
             docs = re.findall(r"([\u4e00-\u9fff]{1,6}[〔\[［(（]\d{4}[〕\]］)）]\d+号)", hist or "")
             ident = docs[-1] if docs else None

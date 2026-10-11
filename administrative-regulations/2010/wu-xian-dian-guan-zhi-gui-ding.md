@@ -1,5 +1,6 @@
 ---
 title: "中华人民共和国无线电管制规定"
+identifier: "国务院、中央军事委员会令第579号"
 xzfg_law_id: "310"
 type: regulation
 jurisdiction: cn

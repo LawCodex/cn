@@ -1,5 +1,6 @@
 ---
 title: "民兵武器装备管理条例"
+identifier: "国务院、中央军事委员会令第178号"
 xzfg_law_id: "403"
 type: regulation
 jurisdiction: cn

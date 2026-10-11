@@ -1,5 +1,6 @@
 ---
 title: "军工关键设备设施管理条例"
+identifier: "国务院、中央军事委员会令第598号"
 xzfg_law_id: "323"
 type: regulation
 jurisdiction: cn

@@ -1,5 +1,6 @@
 ---
 title: "中国人民解放军实施《中华人民共和国执业医师法》办法"
+identifier: "国务院、中央军事委员会令第290号"
 xzfg_law_id: "548"
 type: regulation
 jurisdiction: cn

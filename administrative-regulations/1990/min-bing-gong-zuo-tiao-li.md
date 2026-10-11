@@ -1,5 +1,6 @@
 ---
 title: "民兵工作条例"
+identifier: "国务院、中央军事委员会令第71号"
 xzfg_law_id: "274"
 type: regulation
 jurisdiction: cn

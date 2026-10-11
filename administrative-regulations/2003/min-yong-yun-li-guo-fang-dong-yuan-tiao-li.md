@@ -1,5 +1,6 @@
 ---
 title: "民用运力国防动员条例"
+identifier: "国务院、中央军事委员会令第391号"
 xzfg_law_id: "623"
 type: regulation
 jurisdiction: cn

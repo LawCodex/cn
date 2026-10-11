@@ -1,5 +1,6 @@
 ---
 title: "军服管理条例"
+identifier: "国务院、中央军事委员会令第547号"
 xzfg_law_id: "287"
 type: regulation
 jurisdiction: cn

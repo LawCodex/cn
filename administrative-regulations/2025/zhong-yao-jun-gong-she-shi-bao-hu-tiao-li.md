@@ -1,5 +1,6 @@
 ---
 title: "重要军工设施保护条例"
+identifier: "国务院、中央军事委员会令第808号"
 xzfg_law_id: "1770"
 type: regulation
 jurisdiction: cn

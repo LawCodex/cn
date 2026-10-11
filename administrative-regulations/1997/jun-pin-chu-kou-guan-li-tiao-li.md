@@ -1,5 +1,6 @@
 ---
 title: "中华人民共和国军品出口管理条例"
+identifier: "国务院、中央军事委员会令第234号"
 xzfg_law_id: "495"
 type: regulation
 jurisdiction: cn

@@ -1,5 +1,6 @@
 ---
 title: "现役军人和人民武装警察居民身份证申领发放办法"
+identifier: "国务院、中央军事委员会令第510号"
 xzfg_law_id: "206"
 type: regulation
 jurisdiction: cn

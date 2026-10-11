@@ -1,5 +1,6 @@
 ---
 title: "国防计量监督管理条例"
+identifier: "国务院、中央军事委员会令第54号"
 xzfg_law_id: "260"
 type: regulation
 jurisdiction: cn
