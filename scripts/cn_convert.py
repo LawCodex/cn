@@ -112,6 +112,13 @@ def html_blocks(el, base):
         if not isinstance(e.tag, str) or e.tag in ("script", "style"):
             return
         if e.tag == "table":
+            rows = [[c for c in tr if c.tag in ("td", "th")] for tr in e.iter("tr")]
+            maxc = max((len(r) for r in rows), default=0)
+            layout = maxc <= 1 or (maxc <= 2 and len(e.text_content()) > 5000)
+            if layout:
+                for cell in e.iter("td", "th"):
+                    walk_cell(cell)
+                return
             t = render_table(e, base)
             if t:
                 blocks.append(("table", t))
@@ -132,6 +139,14 @@ def html_blocks(el, base):
         if e.text and norm_ws(e.text):
             blocks.append(("p", norm_ws(e.text)))
         for c in e:
+            walk(c)
+            if c.tail and norm_ws(c.tail):
+                blocks.append(("p", norm_ws(c.tail)))
+
+    def walk_cell(cell):
+        if cell.text and norm_ws(cell.text):
+            blocks.append(("p", norm_ws(cell.text)))
+        for c in cell:
             walk(c)
             if c.tail and norm_ws(c.tail):
                 blocks.append(("p", norm_ws(c.tail)))
