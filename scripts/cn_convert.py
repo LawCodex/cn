@@ -13,7 +13,7 @@ import urllib.parse
 import lxml.html
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from cn_common import RAW, ROOT, fetch, front_matter, slugify_zh  # noqa: E402
+from cn_common import RAW, ROOT, cn2int, fetch, front_matter, slugify_zh  # noqa: E402
 
 TODAY = datetime.date.today().isoformat()
 RETRIEVED = os.environ.get("CN_RETRIEVED", TODAY)
@@ -34,6 +34,8 @@ CAT_DIRS = {
 NUM = "零〇一二三四五六七八九十百千两0-9０-９"
 RE_HEAD = re.compile(rf"^第([{NUM}]+)(编|分编|章|节)(?:[\s　]+(.*)|([^\s　].{{0,30}}))?$")
 RE_ART = re.compile(rf"^(第[{NUM}]+条(?:之[{NUM}]+)?)(?:[\s　]+|$)(.*)$", re.S)
+RE_ART_NS = re.compile(rf"^(第([{NUM}]+)条(之[{NUM}]+)?)([^\s　].*)$", re.S)
+RE_ART_LOOSE = re.compile(rf"^(?:@@[\s　]*)?第([{NUM}]+)(?:[\s　]*条|(?=[\s　]))(之[{NUM}]+)?[\s　]*(.+)$", re.S)
 RE_ANNEX = re.compile(r"^(附件|附表|附录)[一二三四五六七八九十\d]*(?:[：:　\s].{0,60})?$")
 BLOCK_TAGS = {"p", "h1", "h2", "h3", "h4", "h5", "h6", "li", "center", "pre", "blockquote", "dd", "dt"}
 LEVEL_KEYS = ["编", "分编", "章", "节"]
@@ -171,7 +173,9 @@ def to_markdown(title, blocks, structure=True):
     while i < len(blocks) and blocks[i][0] == "p" and (
             re.sub(r"[\s　（）()]", "", blocks[i][1]) in (norm_title, "") or
             re.fullmatch(r"新华社.{0,20}电", blocks[i][1]) or
-            norm_title.startswith(re.sub(r"[\s　（）()]", "", blocks[i][1])) and len(blocks[i][1]) > 4):
+            norm_title.startswith(re.sub(r"[\s　（）()]", "", blocks[i][1])) and len(blocks[i][1]) > 4 or
+            re.sub(r"[\s　（）()]", "", blocks[i][1]).startswith(norm_title) and
+            re.fullmatch(r"\d{4}年?(修正|修订|修改)?(文本)?", re.sub(r"[\s　（）()]", "", blocks[i][1])[len(norm_title):])):
         i += 1
     blocks = blocks[i:]
     # strip table of contents
@@ -210,6 +214,25 @@ def to_markdown(title, blocks, structure=True):
         lines.append("")
 
     articles = 0
+    spaced = sum(1 for kind, t in blocks if kind == "p" and RE_ART.match(t))
+    nospace = True
+    expect = [1]
+
+    def art_match(t):
+        m = RE_ART.match(t)
+        if m or not nospace:
+            return m
+        m2 = RE_ART_NS.match(t)
+        if not m2:
+            m3 = RE_ART_LOOSE.match(t)
+            if m3 and cn2int(m3.group(1)) == expect[0]:
+                return m3
+            return None
+        num = cn2int(m2.group(2))
+        if num is None or num != expect[0] or m2.group(4)[:1] in "的、，之":
+            return None
+        return m2
+
     for kind, t in blocks:
         if kind == "table":
             emit(t)
@@ -225,10 +248,20 @@ def to_markdown(title, blocks, structure=True):
         if RE_ANNEX.match(t) and "。" not in t and articles > 0:
             emit("## " + squash(t) if len(t) < 12 else "## " + t)
             continue
-        ma = RE_ART.match(t)
+        ma = art_match(t)
         if ma:
             articles += 1
-            label, body = ma.group(1), ma.group(2).strip()
+            if ma.re is RE_ART_LOOSE:
+                label, body = f"第{ma.group(1)}条" + (ma.group(2) or ""), ma.group(3).strip()
+                expect[0] += 1
+            elif ma.re is RE_ART_NS:
+                label, body = ma.group(1), ma.group(4).strip()
+                expect[0] += 1
+            else:
+                label, body = ma.group(1), ma.group(2).strip()
+                n_ = cn2int(re.sub(r"^第|条.*$", "", label))
+                if n_:
+                    expect[0] = n_ + 1
             if art_level <= 6:
                 emit("#" * art_level + " " + label)
                 if body:
