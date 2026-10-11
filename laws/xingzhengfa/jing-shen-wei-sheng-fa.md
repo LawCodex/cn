@@ -9,7 +9,7 @@ status: in_force
 history: "2012年通过，2018年修正"
 npc_list_no: "行政法 55"
 source: "https://www.gov.cn/guoqing/2021-10/29/content_5647635.htm"
-source_note: "中国人大网 (www.npc.gov.cn)"
+source_note: "中国政府网 (www.gov.cn); 来源: 中国人大网"
 retrieved: 2026-10-12
 ---
 

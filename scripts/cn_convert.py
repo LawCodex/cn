@@ -384,7 +384,8 @@ def conv_laws(stats, used):
                 stats["blocked"].append(title)
         if use_npc:
             meta = {}
-            source_note = "中国人大网 (www.npc.gov.cn)"
+            source_note = "中国政府网 (www.gov.cn); 来源: 中国人大网" if "gov.cn/" in url and "npc.gov.cn" not in url \
+                else "中国人大网 (www.npc.gov.cn)"
             last = fb.get("date")
             eff = None
             docno = None
