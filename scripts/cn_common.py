@@ -48,6 +48,8 @@ def fetch(url, binary=False, refresh=False, tries=5):
             os.remove(path)
             return fetch(url, binary, refresh, tries)
         return data if binary else data.decode("utf-8", "replace")
+    if os.environ.get("CN_OFFLINE") == "1":
+        raise Blocked(url + " (not cached; CN_OFFLINE=1)")
     os.makedirs(os.path.dirname(path), exist_ok=True)
     err = None
     for i in range(tries):

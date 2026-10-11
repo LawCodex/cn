@@ -13,7 +13,7 @@ import urllib.parse
 import lxml.html
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from cn_common import RAW, ROOT, cn2int, fetch, front_matter, slugify_zh  # noqa: E402
+from cn_common import RAW, ROOT, Blocked, cn2int, fetch, front_matter, slugify_zh  # noqa: E402
 
 TODAY = datetime.date.today().isoformat()
 RETRIEVED = os.environ.get("CN_RETRIEVED", TODAY)
@@ -377,7 +377,12 @@ def conv_laws(stats, used):
         if e["category"] == "宪法":
             continue  # handled by conv_constitution
         if use_npc:
-            url, pt, blocks = parse_npc(fb["url"])
+            try:
+                url, pt, blocks = parse_npc(fb["url"])
+            except Blocked:
+                use_npc = False
+                stats["blocked"].append(title)
+        if use_npc:
             meta = {}
             source_note = "中国人大网 (www.npc.gov.cn)"
             last = fb.get("date")
@@ -418,7 +423,8 @@ def conv_laws(stats, used):
             "source_note": source_note,
             "retrieved": RETRIEVED,
         }
-        if e.get("stale") and not use_npc:
+        npc_old = use_npc and fb.get("years") and e.get("last_year") and max(fb["years"]) < e["last_year"]
+        if (e.get("stale") and not use_npc) or npc_old:
             fm["warning"] = (f"Source text is older than the latest amendment listed by the NPC "
                              f"({e.get('last_year')}); a newer consolidated text was not available from the sources used.")
         write(path, fm, title, body)
@@ -525,7 +531,7 @@ def conv_jis(stats, used):
 
 def main():
     stages = sys.argv[1:] or ["laws", "regs", "jis"]
-    stats = {"laws": {}, "regs": 0, "jis": 0, "constitution": 0, "current_versions": 0, "missing": [], "empty": []}
+    stats = {"laws": {}, "regs": 0, "jis": 0, "constitution": 0, "current_versions": 0, "missing": [], "empty": [], "blocked": []}
     used = set()
     if "laws" in stages:
         conv_constitution(stats, used)
