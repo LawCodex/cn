@@ -54,8 +54,8 @@ not yet in force also have the version currently in force as `<slug>--current.md
   村民委员会组织法 (2025 amendment) and 中国人民解放军选举全国人民代表大会和县级以上地方各级人民代表大会代表的办法
   (2021 amendment). For these only the amending decision (修改决定) has been published online by the sources
   used, not a consolidated text; the file contains the latest consolidated text available.
-- Annexes of the Hong Kong / Macao Basic Laws, flag and emblem drawings and other images are not reproduced
-  (images are kept as links to the official URL where the source embeds them).
+- Images (flag and emblem drawings, the score of the national anthem, some tax-rate tables published as
+  pictures) are not reproduced; where the source embeds them they are kept as links to the official image URL.
 - **Judicial interpretations** are the subset held by the MOFCOM database (199 in force, mostly civil,
   commercial, IP, procedure and economic-crime matters). The Supreme People's Court / Supreme People's
   Procuratorate publish many more; they are not covered.
